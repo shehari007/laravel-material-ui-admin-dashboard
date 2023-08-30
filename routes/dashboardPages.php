@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\dashboard\pages\inboxController;
+// use App\Http\Controllers\dashboard\pages\inboxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +13,8 @@ Route::get('/generalSettings', function () {
     return view('/dashboard/pages/generalSettings');
 })->middleware(['auth', 'verified'])->name('generalSettings');
 
-Route::get('/home', function () {
-    return view('/dashboard/pages/home');
-})->middleware(['auth', 'verified'])->name('home');
-Route::get('/inbox', [inboxController::class, 'index'])->middleware(['auth', 'verified'])->name('inbox');
+
+// Route::get('/inbox', [inboxController::class, 'index'])->middleware(['auth', 'verified'])->name('inbox');
 
 // Route::get('/inbox', function () {
 //     return view('/dashboard/pages/inbox/inbox');

@@ -1,25 +1,14 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Branches') }}
-        </h2>
-    </x-slot>
-
-
-    <div class="py-12">
-
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-        
-
-            <div class="bg-gray dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h3>Welcome to Our Admin Panel.</h3><br />
-                    <p>Hope you Enjoy!</p>
-                </div>
+<x-layout bodyClass="g-sidenav-show  bg-gray-200">
+        <x-navbars.sidebar activePage="branches"></x-navbars.sidebar>
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+            <!-- Navbar -->
+            <x-navbars.navs.auth titlePage="branches"></x-navbars.navs.auth>
+            <!-- End Navbar -->
+            <div class="container-fluid py-4">
+            
+                <x-footers.auth></x-footers.auth>
             </div>
-         
-        </div>
+        </main>
+        <x-plugins></x-plugins>
 
-    </div>
-</x-app-layout>
+</x-layout>
