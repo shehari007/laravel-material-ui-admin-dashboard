@@ -194,7 +194,7 @@ $activeTab = request()->path();
 
                                         <div align="right">
                                             <button type="submit" class="btn btn-success"
-                                                onclick="">Güncelle</button>
+                                                onclick="">Submit</button>
                                         </div>
 
                                     </form>
@@ -211,16 +211,14 @@ $activeTab = request()->path();
                             <div class="row">
                                 <div class="col-12">
                                 <form role="form" class="form-horizontal" id="tab2_form" method="POST"
-                                        action="http://www.demotikla.com/demo/firma/admin/ajax.php?p=dayarlar"
-                                        onsubmit="return false;" enctype="multipart/form-data">
+                                       >
 
 
 
 
 
                                         <div class="input-group input-group-outline my-3">
-                                            <label for="title" class="col-sm-3 control-label">Anasayfa Başlık
-                                                (Title)</label>
+                                            <label for="title" class="col-sm-3 control-label">Homepage Title</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="title" name="title"
                                                     value="Creative Business Kurumsal Firma Scripti">
@@ -228,8 +226,8 @@ $activeTab = request()->path();
                                         </div>
 
                                         <div class="input-group input-group-outline my-3">
-                                            <label for="keywords" class="col-sm-3 control-label">Anahtar Kelimeler
-                                                (Keywords)</label>
+                                            <label for="keywords" class="col-sm-3 control-label">
+                                                Keywords</label>
                                             <div class="col-sm-9">
                                                 <input name="keywords" id="keywords" class="form-control tags"
                                                     value="firma scripti,kurumsal firma scripti,profesyonel firma scripti,ucuz firma scripti"
@@ -239,8 +237,7 @@ $activeTab = request()->path();
                                         </div>
 
                                         <div class="input-group input-group-outline my-3">
-                                            <label for="description" class="col-sm-3 control-label">Site Açıklaması
-                                                (Description)</label>
+                                            <label for="description" class="col-sm-3 control-label">Site Description</label>
                                             <div class="col-sm-9">
                                                 <textarea class="form-control" rows="5" id="description"
                                                     name="description">Creative Business Kurumsal Firma Scripti ile firma, kurum ya da kuruşunuzun etkileyici, ilgi çekici ve akılda kalıcı bir web sitesi olsun.</textarea>
@@ -310,7 +307,7 @@ $activeTab = request()->path();
                                         </div>
 
                                         <div class="input-group input-group-outline my-3">
-                                            <label for="telefon" class="col-sm-3 control-label">Telefon</label>
+                                            <label for="telefon" class="col-sm-3 control-label">Telephone</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="telefon" name="telefon"
                                                     value="0212 444 1 444">
@@ -318,7 +315,7 @@ $activeTab = request()->path();
                                         </div>
 
                                         <div class="input-group input-group-outline my-3">
-                                            <label for="faks" class="col-sm-3 control-label">Faks</label>
+                                            <label for="faks" class="col-sm-3 control-label">Fax</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="faks" name="faks"
                                                     value="(0212) 000 00 00">
@@ -326,7 +323,7 @@ $activeTab = request()->path();
                                         </div>
 
                                         <div class="input-group input-group-outline my-3">
-                                            <label for="email" class="col-sm-3 control-label">E-Posta</label>
+                                            <label for="email" class="col-sm-3 control-label">E-Mail</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" id="email" name="email"
                                                     value="info@example.com">
@@ -335,7 +332,7 @@ $activeTab = request()->path();
 
 
                                         <div class="input-group input-group-outline my-3">
-                                            <label for="adres" class="col-sm-3 control-label">Adres</label>
+                                            <label for="adres" class="col-sm-3 control-label">Address</label>
                                             <div class="col-sm-9">
                                                 <textarea class="form-control" rows="5" id="adres"
                                                     name="adres">Lorem ipsum dolor sit ametipsum dolor sit amet İstanbul/Türkiye</textarea>
@@ -343,7 +340,7 @@ $activeTab = request()->path();
                                         </div>
 
                                         <div class="input-group input-group-outline my-3">
-                                            <label for="analytics" class="col-sm-3 control-label">Analytics Kodu</label>
+                                            <label for="analytics" class="col-sm-3 control-label">Analytics Code</label>
                                             <div class="col-sm-9">
                                                 <textarea class="form-control" rows="5" id="analytics"
                                                     name="analytics"></textarea>
@@ -356,8 +353,8 @@ $activeTab = request()->path();
 
 
                                         <div align="right">
-                                            <button type="submit" class="btn btn-purple waves-effect waves-light"
-                                               >Güncelle</button>
+                                            <button type="submit" class="btn btn-success"
+                                               >Submit</button>
                                         </div>
 
 
@@ -369,7 +366,72 @@ $activeTab = request()->path();
                 </div>
                 </div>
                 <div class="tab-pane fade" id="smtp" role="tabpanel">
-                    <h1>SMTP</h1>
+                <div class="card card-frame mt-5">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                <form role="form" class="form-horizontal" id="tab3_form" method="POST"
+                                       >
+
+                                        <div class="alert alert-info" role="alert">Your contact form can work
+                                            It is mandatory to fill in the information below. Please ask your system administrator,
+                                            create an e-mail account for you and provide the following information
+                                            please ask.</div>
+                                        <div class="input-group input-group-outline my-3">
+                                            <label for="smtp_host" class="col-sm-3 control-label">SMTP Server:</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="smtp_host" name="smtp_host"
+                                                    placeholder="Örn: mail.domain.com" value="mail.example.com">
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group input-group-outline my-3">
+                                            <label for="smtp_port" class="col-sm-3 control-label">SMTP Port:</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="smtp_port" name="smtp_port"
+                                                    placeholder="Genelde 587&#39;dir." value="587">
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group input-group-outline my-3">
+                                            <label for="smtp_protokol" class="col-sm-3 control-label">SMTP Protocol:
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <select name="smtp_protokol" id="smtp_protokol" class="form-control">
+                                                    <option value="">Yok</option>
+                                                    <option value="tls" selected="">TLS</option>
+                                                    <option value="ssl">SSL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group input-group-outline my-3">
+                                            <label for="smtp_username" class="col-sm-3 control-label">E-Mail:</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="smtp_username"
+                                                    name="smtp_username" placeholder="Örn: info@example.com"
+                                                    value="info@example.com">
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group input-group-outline my-3">
+                                            <label for="smtp_password" class="col-sm-3 control-label">E-Mail Password:</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="smtp_password"
+                                                    name="smtp_password" value="123456">
+                                            </div>
+                                        </div>
+                                        <div align="right">
+                                            <button type="submit" class="btn btn-success"
+                                                >Submit</button>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                </div>
                 </div>
             </div>
             <x-footers.auth></x-footers.auth>
