@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\dashboard\pages\inboxController;
+use App\Http\Controllers\GeneralSettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -9,16 +9,19 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/generalSettings', function () {
+Route::get('/generalSettings', [GeneralSettingsController::class,'index1'], function () {
+    return view('/dashboard/pages/generalSettings');
+})->middleware(['auth', 'verified'])->name('generalSettingshome');
+
+Route::post('/generalSettings/{type}', [GeneralSettingsController::class, 'superUpdate'], function () {
     return view('/dashboard/pages/generalSettings');
 })->middleware(['auth', 'verified'])->name('generalSettings');
 
-
 // Route::get('/inbox', [inboxController::class, 'index'])->middleware(['auth', 'verified'])->name('inbox');
 
-// Route::get('/inbox', function () {
-//     return view('/dashboard/pages/inbox/inbox');
-// })->middleware(['auth', 'verified'])->name('inbox');
+Route::get('/inbox', function () {
+    return view('/dashboard/pages/inbox/inbox');
+})->middleware(['auth', 'verified'])->name('inbox');
 
 Route::get('/newsAndupdates', function () {
     return view('/dashboard/pages/newsAndupdates');
