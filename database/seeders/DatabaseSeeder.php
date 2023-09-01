@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\generalSettings;
 
 
 class DatabaseSeeder extends Seeder
@@ -16,8 +17,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@material.com',
+            'name' => 'syb',
+            'email' => 'shehariyar@gmail.com',
             'password' => ('secret')
         ]);
     }

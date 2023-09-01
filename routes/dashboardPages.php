@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralSettingsController;
+use App\Http\Controllers\InboxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,16 @@ Route::post('/generalSettings/{type}', [GeneralSettingsController::class, 'super
     return view('/dashboard/pages/generalSettings');
 })->middleware(['auth', 'verified'])->name('generalSettings');
 
-// Route::get('/inbox', [inboxController::class, 'index'])->middleware(['auth', 'verified'])->name('inbox');
 
-Route::get('/inbox', function () {
-    return view('/dashboard/pages/inbox/inbox');
+Route::get('/inbox', [InboxController::class,'getInbox'], function () {
+    return view('/dashboard/pages/inbox');
+})->middleware(['auth', 'verified'])->name('inboxhome');
+
+Route::post('/inbox/{id}', [InboxController::class,'deleteInbox'], function () {
+    return view('/dashboard/pages/inbox');
 })->middleware(['auth', 'verified'])->name('inbox');
+
+Route::post('/inbox/selectedAction/{type}', [InboxController::class,'selectedAction'])->name('inbox');
 
 Route::get('/newsAndupdates', function () {
     return view('/dashboard/pages/newsAndupdates');

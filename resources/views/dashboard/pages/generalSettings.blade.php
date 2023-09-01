@@ -3,7 +3,7 @@ $activeTab = request()->path();
 @endphp
 <x-layout bodyClass="g-sidenav-show  bg-gray-200">
 
-    <x-navbars.sidebar activePage="General Settings"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="generalSettings"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="General Settings"></x-navbars.navs.auth>
@@ -35,7 +35,7 @@ $activeTab = request()->path();
             </div>
             <div class="tab-content">
                 <div class="tab-pane fade active show" id="site-settings" role="tabpanel">
-                    <div class="card card-frame mt-5">
+                    <div class="card card-frame mt-4">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
@@ -204,7 +204,7 @@ $activeTab = request()->path();
 
                 </div>
                 <div class="tab-pane fade" id="site-info" role="tabpanel">
-                    <div class="card card-frame mt-5">
+                    <div class="card card-frame mt-4">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
@@ -338,7 +338,7 @@ $activeTab = request()->path();
                     </div>
                 </div>
                 <div class="tab-pane fade" id="smtp" role="tabpanel">
-                    <div class="card card-frame mt-5">
+                    <div class="card card-frame mt-4">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
