@@ -2,7 +2,7 @@
     <x-navbars.sidebar activePage="inbox"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage="inbox"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="Inbox"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             @if (\Session::has('success'))

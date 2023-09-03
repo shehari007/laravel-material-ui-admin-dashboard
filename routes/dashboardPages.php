@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralSettingsController;
 use App\Http\Controllers\InboxController;
+use App\Http\Controllers\NewsAndUpdateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,11 @@ Route::post('/inbox/{id}', [InboxController::class,'deleteInbox'], function () {
 
 Route::post('/inbox/selectedAction/{type}', [InboxController::class,'selectedAction'])->name('inbox');
 
-Route::get('/newsAndupdates', function () {
+Route::get('/newsAndupdates',[NewsAndUpdateController::class, 'getNewsAndUpdates'], function () {
+    return view('/dashboard/pages/newsAndupdates');
+})->middleware(['auth', 'verified'])->name('newsAndupdateshome');
+
+Route::post('/newsAndupdates/insertNew',[NewsAndUpdateController::class, 'insertNew'], function () {
     return view('/dashboard/pages/newsAndupdates');
 })->middleware(['auth', 'verified'])->name('newsAndupdates');
 
