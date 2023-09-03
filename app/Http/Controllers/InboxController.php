@@ -8,23 +8,12 @@ use Illuminate\Support\Facades\Session;
 
 class InboxController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+ 
     public function getInbox()
     {
         $inboxData = inbox::all();
         return view("/dashboard/pages/inbox", compact('inboxData'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
 
     public function deleteInbox($id)
     {
@@ -37,8 +26,6 @@ class InboxController extends Controller
         $inbox->delete();
         return redirect()->route('inboxhome')->with('success', 'Inbox message deleted successfully.');
     }
-
-
 
     public function selectedAction(Request $req, $type)
     {
@@ -63,44 +50,4 @@ class InboxController extends Controller
 
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(inbox $inbox)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(inbox $inbox)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, inbox $inbox)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(inbox $inbox)
-    {
-        //
-    }
 }

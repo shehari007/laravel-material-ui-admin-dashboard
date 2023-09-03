@@ -11,6 +11,8 @@ use App\Http\Controllers\NewsAndUpdateController;
 |--------------------------------------------------------------------------
 */
 
+// ------  General Settings Routes Start -------------------------------- ///
+
 Route::get('/generalSettings', [GeneralSettingsController::class,'index1'], function () {
     return view('/dashboard/pages/generalSettings');
 })->middleware(['auth', 'verified'])->name('generalSettingshome');
@@ -19,6 +21,10 @@ Route::post('/generalSettings/{type}', [GeneralSettingsController::class, 'super
     return view('/dashboard/pages/generalSettings');
 })->middleware(['auth', 'verified'])->name('generalSettings');
 
+// ------  General Settings Routes End -------------------------------- ///
+
+
+// ------  Inbox Messages Routes Start -------------------------------- ///
 
 Route::get('/inbox', [InboxController::class,'getInbox'], function () {
     return view('/dashboard/pages/inbox');
@@ -30,6 +36,11 @@ Route::post('/inbox/{id}', [InboxController::class,'deleteInbox'], function () {
 
 Route::post('/inbox/selectedAction/{type}', [InboxController::class,'selectedAction'])->name('inbox');
 
+// ------  Inbox Messages Routes End -------------------------------- ///
+
+
+// ------  News And Updates Routes Start -------------------------------- ///
+
 Route::get('/newsAndupdates',[NewsAndUpdateController::class, 'getNewsAndUpdates'], function () {
     return view('/dashboard/pages/newsAndupdates');
 })->middleware(['auth', 'verified'])->name('newsAndupdateshome');
@@ -37,6 +48,19 @@ Route::get('/newsAndupdates',[NewsAndUpdateController::class, 'getNewsAndUpdates
 Route::post('/newsAndupdates/insertNew',[NewsAndUpdateController::class, 'insertNew'], function () {
     return view('/dashboard/pages/newsAndupdates');
 })->middleware(['auth', 'verified'])->name('newsAndupdates');
+
+Route::post('/newsAndupdates/editNews/{id}',[NewsAndUpdateController::class, 'editNews'], function () {
+    return view('/dashboard/pages/newsAndupdates');
+})->middleware(['auth', 'verified'])->name('newsAndupdates');
+
+Route::post('/newsAndupdates/{id}', [NewsAndUpdateController::class,'deleteNews'], function () {
+    return view('/dashboard/pages/newsAndupdates');
+})->middleware(['auth', 'verified'])->name('newsAndupdates');
+
+Route::post('/newsAndupdates/deleteSelected/{type}', [NewsAndUpdateController::class,'deleteSelectedNews'])->name('newsAndupdates');
+
+// ------  Inbox Messages Routes End -------------------------------- ///
+
 
 Route::get('/blog', function () {
     return view('/dashboard/pages/blog');
