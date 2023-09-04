@@ -55,7 +55,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'blog' ? 'active bg-gradient-primary' : '' }} "
-                    href="{{ route('blog') }}">
+                    href="{{ route('bloghome') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1.2rem;" class="fa fa-rss ps-2 pe-2 text-center"></i>
                     </div>

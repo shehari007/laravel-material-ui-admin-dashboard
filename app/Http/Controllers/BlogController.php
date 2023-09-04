@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\newsAndUpdate;
+use App\Models\blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
-class NewsAndUpdateController extends Controller
+class BlogController extends Controller
 {
-
-    public function getNewsAndUpdates()
+  
+    public function getBlogs()
     {
-        $news = newsAndUpdate::all();
-        return view("/dashboard/pages/newsAndUpdates", compact('news'));
+        $blogs = blog::all();
+        return view("/dashboard/pages/blog", compact('blogs'));
     }
 
-    public function insertNew(Request $request)
+  
+    public function insertNewBlog(Request $request)
     {
         $img1 = '';
         $img2 = '';
@@ -33,7 +34,7 @@ class NewsAndUpdateController extends Controller
             $uploadedFile = $request->file('list_img');
             $originalFilename = $uploadedFile->getClientOriginalName();
             $img1 = Str::random(20) . '_' . $originalFilename;
-            $uploadedFile->storeAs('public/newsAndUpdates/listImages', $img1);
+            $uploadedFile->storeAs('public/blog/listImages', $img1);
         }
         if ($request->hasFile('back_img')) {
             $request->validate([
@@ -43,9 +44,9 @@ class NewsAndUpdateController extends Controller
             $uploadedFile = $request->file('back_img');
             $originalFilename = $uploadedFile->getClientOriginalName();
             $img2 = Str::random(20) . '_' . $originalFilename;
-            $uploadedFile->storeAs('public/newsAndUpdates/backImages', $img2);
+            $uploadedFile->storeAs('public/blog/backImages', $img2);
         }
-        $newRecord = new newsAndUpdate([
+        $newRecord = new blog([
             'heading' => $request->input('heading'),
             'url' => $modifiedUrl,
             'list_img' => $img1,
@@ -56,16 +57,39 @@ class NewsAndUpdateController extends Controller
             'seo_description' => $request->input('seo_desc'),
         ]);
         $newRecord->save();
-        return redirect()->route('newsAndupdateshome')->with('success', 'New Record Added successfully.');
+        return redirect()->route('bloghome')->with('success', 'New Blog Added successfully.');
     }
 
-    public function editNews(Request $request, $id)
+  
+    public function deleteSelectedBlogs(Request $request, $typeBlog)
     {
+        if ($typeBlog === 'deleteCheckedBlogs') {
 
+            $tables = blog::whereIn('id', $request->ids)->get();
+
+            foreach ($tables as $table) {
+                if ($table->list_img !== '') {
+                    Storage::delete('public/blog/listImages/' . $table->list_img);
+                }
+                if ($table->list_background !== '') {
+                    Storage::delete('public/blog/backImages/' . $table->list_background);
+                }
+
+                $table->delete();
+            }
+
+            Session::flash('success', 'Selected Blogs deleted successfully');
+            return true;
+        }
+    }
+
+
+    public function editBlogs(Request $request, $id)
+    {
         $url = $request->input('heading');
         $modifiedUrl = str_replace(' ', '-', $url) . '.html';
 
-        $table = newsAndUpdate::where('id', $id)->first();
+        $table = blog::where('id', $id)->first();
         $img1 = $table->list_img;
         $img2 = $table->list_background;
 
@@ -74,24 +98,24 @@ class NewsAndUpdateController extends Controller
                 'list_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
             if ($table->list_img !== '') {
-                Storage::delete('public/newsAndUpdates/listImages/' . $table->list_img);
+                Storage::delete('public/blog/listImages/' . $table->list_img);
             }
             $uploadedFile = $request->file('list_img');
             $originalFilename = $uploadedFile->getClientOriginalName();
             $img1 = Str::random(20) . '_' . $originalFilename;
-            $uploadedFile->storeAs('public/newsAndUpdates/listImages', $img1);
+            $uploadedFile->storeAs('public/blog/listImages', $img1);
         }
         if ($request->hasFile('back_img')) {
             $request->validate([
                 'backimg' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
             if ($table->list_background) {
-                Storage::delete('public/newsAndUpdates/backImages/' . $table->list_background);
+                Storage::delete('public/blog/backImages/' . $table->list_background);
             }
             $uploadedFile = $request->file('back_img');
             $originalFilename = $uploadedFile->getClientOriginalName();
             $img2 = Str::random(20) . '_' . $originalFilename;
-            $uploadedFile->storeAs('public/newsAndUpdates/backImages', $img2);
+            $uploadedFile->storeAs('public/blog/backImages', $img2);
         }
         $table->update([
             'heading' => $request->input('heading'),
@@ -103,47 +127,31 @@ class NewsAndUpdateController extends Controller
             'seo_keywords' => $request->input('seo_keywords'),
             'seo_description' => $request->input('seo_desc'),
         ]);
-        return redirect()->route('newsAndupdateshome')->with('success', 'News record edited successfully.');
+        return redirect()->route('bloghome')->with('success', 'Blog Record Edited Successfully.');
     }
 
-    public function deleteNews($id)
+ 
+    public function deleteBlog($id)
     {
-        $table = newsAndUpdate::find($id);
+        $table = blog::find($id);
 
         if (!$table) {
-            return redirect()->route('newsAndupdateshome')->with('error', 'News not found delete failed.');
+            return redirect()->route('bloghome')->with('error', 'Blog not found delete failed.');
         }
         if ($table->list_img !== '') {
-            Storage::delete('public/newsAndUpdates/listImages/' . $table->list_img);
+            Storage::delete('public/blog/listImages/' . $table->list_img);
         }
         if ($table->list_background !== '') {
-            Storage::delete('public/newsAndUpdates/backImages/' . $table->list_background);
+            Storage::delete('public/blog/backImages/' . $table->list_background);
         }
 
         $table->delete();
-        return redirect()->route('newsAndupdateshome')->with('success', 'News deleted successfully.');
+        return redirect()->route('bloghome')->with('success', 'Blog deleted successfully.');
     }
 
-    public function deleteSelectedNews(Request $request, $type)
+   
+    public function destroy(blog $blog)
     {
-        if ($type === 'deleteCheckedNews') {
-
-            $tables = newsAndUpdate::whereIn('id', $request->ids)->get();
-
-            foreach ($tables as $table) {
-                if ($table->list_img !== '') {
-                    Storage::delete('public/newsAndUpdates/listImages/' . $table->list_img);
-                }
-                if ($table->list_background !== '') {
-                    Storage::delete('public/newsAndUpdates/backImages/' . $table->list_background);
-                }
-
-                $table->delete();
-            }
-
-            Session::flash('success', 'Selected News & Updates deleted successfully');
-            return true;
-        }
+        //
     }
-
 }

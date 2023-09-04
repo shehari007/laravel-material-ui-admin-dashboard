@@ -72,7 +72,7 @@
                                             <form method="POST" action="newsAndupdates/{{ $news->id }}">
                                                 @csrf
                                                 <div>
-                                                    <p>Are you sure you want to delete this message?</p>
+                                                    <p>Are you sure you want to delete this News & Updates?</p>
                                                 </div>
                                                 <div align='right'>
                                                     <button type="submit" class="btn btn-danger" class="btn bg-gradient-primary">Yes</button>
@@ -193,7 +193,7 @@
                         </div>
                         <div class="modal-body">
                             <div>
-                                <p>Are you sure you want to delete the selected messages?</p>
+                                <p>Are you sure you want to delete the selected News & Updates?</p>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -263,13 +263,13 @@
                                     </div>
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label for="seo_keywords" class="col-sm-3 control-label">SEO Title</label>
+                                    <label for="seo_keywords" class="col-sm-3 control-label">SEO Keywords</label>
                                     <div class="col-sm-9">
                                         <input type="text" required class="form-control" id="seo_keywords" name="seo_keywords"></input>
                                     </div>
                                 </div>
                                 <div class="input-group input-group-outline my-3">
-                                    <label for="seo_desc" class="col-sm-3 control-label">SEO Title</label>
+                                    <label for="seo_desc" class="col-sm-3 control-label">SEO Description</label>
                                     <div class="col-sm-9">
                                         <input type="text" required class="form-control" id="seo_desc" name="seo_desc"></input>
                                     </div>

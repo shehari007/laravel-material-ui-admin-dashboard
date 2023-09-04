@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralSettingsController;
 use App\Http\Controllers\InboxController;
@@ -62,9 +63,26 @@ Route::post('/newsAndupdates/deleteSelected/{type}', [NewsAndUpdateController::c
 // ------  Inbox Messages Routes End -------------------------------- ///
 
 
-Route::get('/blog', function () {
+// ------  Blogs Routes Start -------------------------------- ///
+Route::get('/blog', [BlogController::class, 'getBlogs'], function () {
+    return view('/dashboard/pages/blog');
+})->middleware(['auth','verified'])->name('bloghome');
+
+Route::post('/blog/insertNewBlog', [BlogController::class, 'insertNewBlog'], function () {
     return view('/dashboard/pages/blog');
 })->middleware(['auth','verified'])->name('blog');
+
+Route::post('/blog/deleteSelected/{typeBlog}', [BlogController::class, 'deleteSelectedBlogs'])->name('blog');
+
+Route::post('/blog/editBlogs/{id}',[BlogController::class, 'editBlogs'], function () {
+    return view('/dashboard/pages/blog');
+})->middleware(['auth', 'verified'])->name('blog');
+
+Route::post('/blog/{id}', [BlogController::class,'deleteBlog'], function () {
+    return view('/dashboard/pages/blog');
+})->middleware(['auth', 'verified'])->name('blog');
+
+
 
 Route::get('/photoGallery', function () {
     return view('/dashboard/pages/photoGallery');

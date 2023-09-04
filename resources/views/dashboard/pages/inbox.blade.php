@@ -26,19 +26,21 @@
                 <p style="color: white;font-weight:bold">{!! \Session::get('unreadSelected') !!}</p>
             </div>
             @endif
-            <div class="card">
 
-                <div class="table-responsive">
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal2" id="delete-selected-modal" style="display: none;margin:5px">
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal2" id="delete-selected-modal" style="display: none;">
                         <i class="material-icons">delete</i> Delete Selected
                     </button>
-                    <button type="button" class="btn btn-info" id="read-selected-button" style="display: none;margin:5px">
+                    <button type="button" class="btn btn-info" id="read-selected-button" style="display: none;">
                         <i class="material-icons">done_all</i> Mark As Read
                     </button>
-                    <button type="button" class="btn btn-warning" id="unread-selected-button" style="display: none;margin:5px">
+                    <button type="button" class="btn btn-warning" id="unread-selected-button" style="display: none;">
                         <i class="material-icons">markunread</i> Mark As Unread
                     </button>
 
+            <div class="card">
+
+                <div class="table-responsive">
+                    
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
@@ -79,6 +81,7 @@
                                     </button>
                                 </td>
                             </tr>
+
                             <!-- Delete Confirm Modal -->
                             <div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -95,13 +98,17 @@
                                                 <div>
                                                     <p>Are you sure you want to delete this message?</p>
                                                 </div>
+                                                <div align="right">
                                                 <button type="submit" class="btn btn-danger" class="btn bg-gradient-primary">Yes</button>
                                                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">No</button>
+                                                </div>
+                                               
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             @endforeach
                         </tbody>
                     </table>
@@ -128,6 +135,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- CheckBox Delete Modal Confirm -->
             <div class="modal fade" id="deleteConfirmModal2" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel2" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">

@@ -9,6 +9,15 @@ $activeTab = request()->path();
         <x-navbars.navs.auth titlePage="General Settings"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
+        <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
             <div class="nav-wrapper position-relative end-0">
                 @if (\Session::has('message'))
                 <div class="alert alert-success">
