@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralSettingsController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\NewsAndUpdateController;
+use App\Http\Controllers\WebpagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,33 @@ Route::post('/blog/{id}', [BlogController::class,'deleteBlog'], function () {
     return view('/dashboard/pages/blog');
 })->middleware(['auth', 'verified'])->name('blog');
 
+// ------  Blogs Routes End -------------------------------- ///
+
+
+// ------  Web Pages Routes Start -------------------------------- ///
+
+Route::get('/webPages', [WebpagesController::class, 'getWebPages'],function () {
+    return view('/dashboard/pages/webPages');
+})->middleware(['auth','verified'])->name('webPageshome');
+
+Route::post('/webPages/insertNewWebPage', [WebpagesController::class, 'insertNewWebPage'],function () {
+    return view('/dashboard/pages/webPages');
+})->middleware(['auth','verified'])->name('webPages');
+
+
+Route::post('/webPages/editWebPages/{id}', [WebpagesController::class, 'editWebPage'],function () {
+    return view('/dashboard/pages/webPages');
+})->middleware(['auth','verified'])->name('webPages');
+
+
+
+
+
+
+
+
+
+
 
 
 Route::get('/photoGallery', function () {
@@ -104,9 +132,7 @@ Route::get('/products', function () {
     return view('/dashboard/pages/products');
 })->middleware(['auth','verified'])->name('products');
 
-Route::get('/webPages', function () {
-    return view('/dashboard/pages/webPages');
-})->middleware(['auth','verified'])->name('webPages');
+
 
 Route::get('/references', function () {
     return view('/dashboard/pages/references');

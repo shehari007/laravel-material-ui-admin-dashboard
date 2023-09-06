@@ -227,7 +227,7 @@
                                         <div class="col-sm-9">
                                             <input type="file" class="form-control" id="list_img" accept=".jpeg, .jpg, .png, .gif" size="2000000" name="list_img">
                                             <br>
-                                            <img id="imagePreview" src="#" alt="Image Preview" style="display: none; max-width: 100px; max-height: 100px;">
+                                            <img id="imagePreview" src="" alt="Image Preview" style="display: none; max-width: 100px; max-height: 100px;">
                                             <p style="margin-left:10px;font-size:13px;margin-top:5px;">
                                                 Photo should not be more than 2MB.</p>
                                         </div>
@@ -238,7 +238,7 @@
                                         <div class="col-sm-9">
                                             <input type="file" class="form-control" id="back_img" accept=".jpeg, .jpg, .png, .gif" size="2000000" name="back_img">
                                             <br>
-                                            <img id="imagePreview2" src="#2" alt="Image Preview2" style="display: none; max-width: 100px; max-height: 100px;">
+                                            <img id="imagePreview2" src="" alt="Image Preview2" style="display: none; max-width: 100px; max-height: 100px;">
                                             <p style="margin-left:10px;font-size:13px;margin-top:5px;">
                                                 Photo should not be more than 2MB.</p>
                                         </div>
@@ -325,7 +325,7 @@
             reader.readAsDataURL(fileInput.files[0]);
         } else {
             imagePreview.style.display = 'none';
-            imagePreview.src = '#';
+            imagePreview.src = '';
         }
     });
     document.getElementById('back_img').addEventListener('change', function() {
@@ -343,7 +343,7 @@
             reader.readAsDataURL(fileInput.files[0]);
         } else {
             imagePreview.style.display = 'none';
-            imagePreview.src = '#2';
+            imagePreview.src = '';
         }
     });
 </script>
