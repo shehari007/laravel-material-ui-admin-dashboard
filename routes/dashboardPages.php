@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralSettingsController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\NewsAndUpdateController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\WebpagesController;
 
 /*
@@ -101,36 +104,128 @@ Route::post('/webPages/editWebPages/{id}', [WebpagesController::class, 'editWebP
     return view('/dashboard/pages/webPages');
 })->middleware(['auth','verified'])->name('webPages');
 
+Route::post('/webPages/{id}', [WebpagesController::class, 'deleteWebPage'],function () {
+    return view('/dashboard/pages/webPages');
+})->middleware(['auth','verified'])->name('webPages');
+
+Route::post('/webPages/deleteSelected/{typeWebPage}', [WebpagesController::class, 'deleteSelectedWebPages'],function () {
+    return view('/dashboard/pages/webPages');
+})->middleware(['auth','verified'])->name('webPages');
+
+
+// ------- Web Pages Routes End -------------------------------- //
 
 
 
 
+// -------- Products Routes Start -------------------------------- //
+
+
+Route::get('/products', [ProductsController::class, 'getProducts'], function () {
+    return view('/dashboard/pages/products');
+})->middleware(['auth','verified'])->name('productshome');
+
+
+Route::post('/products/insertNewProduct', [ProductsController::class, 'insertNewProduct'], function () {
+    return view('/dashboard/pages/products');
+})->middleware(['auth','verified'])->name('products');
+
+Route::post('/products/{id}', [ProductsController::class, 'deleteProduct'], function () {
+    return view('/dashboard/pages/products');
+})->middleware(['auth','verified'])->name('products');
+
+
+Route::post('/products/deleteSelected/{typeProduct}', [ProductsController::class, 'deleteSelectedProducts'], function () {
+    return view('/dashboard/pages/products');
+})->middleware(['auth','verified'])->name('products');
+
+
+Route::post('/products/editProduct/{id}', [ProductsController::class, 'editProduct'], function () {
+    return view('/dashboard/pages/products');
+})->middleware(['auth','verified'])->name('products');
+
+
+
+Route::get('/products/category', [CategoriesController::class, 'getCategories' ], function () {
+    return view('/dashboard/pages/category');
+})->middleware(['auth','verified'])->name('categoryhome');
+
+
+Route::post('/products/category/insertNewCategory', [CategoriesController::class, 'insertNewCategory' ], function () {
+    return view('/dashboard/pages/category');
+})->middleware(['auth','verified'])->name('category');
+
+
+
+Route::post('/products/category/editCategory/{id}', [CategoriesController::class, 'editCategory' ], function () {
+    return view('/dashboard/pages/category');
+})->middleware(['auth','verified'])->name('category');
+
+
+Route::post('/products/category/{id}', [CategoriesController::class, 'deleteCategory' ], function () {
+    return view('/dashboard/pages/category');
+})->middleware(['auth','verified'])->name('category');
+
+
+Route::post('/products/category/deleteSelected/{typeCategory}', [CategoriesController::class, 'deleteSelectedCategories' ], function () {
+    return view('/dashboard/pages/category');
+})->middleware(['auth','verified'])->name('category');
+
+
+// -------- Products Routes End -------------------------------- //
 
 
 
 
+// -------- Services Routes Start -------------------------------- //
 
+Route::get('/services', [ServicesController::class, 'getServices'],  function () {
+    return view('/dashboard/pages/services');
+})->middleware(['auth','verified'])->name('serviceshome');
+
+
+Route::post('/services/insertNewService', [ServicesController::class, 'insertNewService'],  function () {
+    return view('/dashboard/pages/services');
+})->middleware(['auth','verified'])->name('services');
+
+Route::post('/services/editService/{id}', [ServicesController::class, 'editService'],  function () {
+    return view('/dashboard/pages/services');
+})->middleware(['auth','verified'])->name('services');
+
+
+Route::post('/services/deleteService/{id}', [ServicesController::class, 'deleteService'],  function () {
+    return view('/dashboard/pages/services');
+})->middleware(['auth','verified'])->name('services');
+
+Route::post('/services/deleteSelected/{typeService}', [ServicesController::class, 'deleteSelectedServices'],  function () {
+    return view('/dashboard/pages/services');
+})->middleware(['auth','verified'])->name('services');
+
+
+// -------- Services Routes End -------------------------------- //
+
+
+
+// --------- PhotoSlider Routes Start --------------------------------///
+
+Route::get('/photoSlider', function () {
+    return view('/dashboard/pages/photoSlider');
+})->middleware(['auth','verified'])->name('photoSlider');
+
+
+// -------- PhotoSlider Routes End -------------------------------- ///
 
 
 Route::get('/photoGallery', function () {
     return view('/dashboard/pages/photoGallery');
 })->middleware(['auth','verified'])->name('photoGallery');
 
-Route::get('/photoSlider', function () {
-    return view('/dashboard/pages/photoSlider');
-})->middleware(['auth','verified'])->name('photoSlider');
+
 
 Route::get('/videoGallery', function () {
     return view('/dashboard/pages/videoGallery');
 })->middleware(['auth','verified'])->name('videoGallery');
 
-Route::get('/services', function () {
-    return view('/dashboard/pages/services');
-})->middleware(['auth','verified'])->name('services');
-
-Route::get('/products', function () {
-    return view('/dashboard/pages/products');
-})->middleware(['auth','verified'])->name('products');
 
 
 

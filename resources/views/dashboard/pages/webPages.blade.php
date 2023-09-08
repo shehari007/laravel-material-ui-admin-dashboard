@@ -72,7 +72,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="POST" action="blog/{{ $webpages->id }}">
+                                            <form method="POST" action="webPages/{{ $webpages->id }}">
                                                 @csrf
                                                 <div>
                                                     <p>Are you sure you want to delete this Page?</p>
@@ -376,7 +376,7 @@
 
             if (deleteSelected.length > 0) {
                 $.ajax({
-                    url: `blog/deleteSelected/deleteCheckedBlogs`,
+                    url: `webPages/deleteSelected/deleteCheckedWebPages`,
                     method: "POST",
                     data: {
                         ids: deleteSelected,

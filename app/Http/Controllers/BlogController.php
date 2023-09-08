@@ -133,6 +133,7 @@ class BlogController extends Controller
  
     public function deleteBlog($id)
     {
+        
         $table = blog::find($id);
 
         if (!$table) {
