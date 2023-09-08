@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralSettingsController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\NewsAndUpdateController;
+use App\Http\Controllers\PhotoslidesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\WebpagesController;
@@ -208,10 +209,29 @@ Route::post('/services/deleteSelected/{typeService}', [ServicesController::class
 
 // --------- PhotoSlider Routes Start --------------------------------///
 
-Route::get('/photoSlider', function () {
+Route::get('/photoSlider',[PhotoslidesController::class, 'getPhotoSliders'], function () {
+    return view('/dashboard/pages/photoSlider');
+})->middleware(['auth','verified'])->name('photoSliderhome');
+
+
+Route::post('/photoSlider/insertNewSlider',[PhotoslidesController::class, 'insertNewSlider'], function () {
     return view('/dashboard/pages/photoSlider');
 })->middleware(['auth','verified'])->name('photoSlider');
 
+
+Route::post('/photoSlider/deleteSlide/{id}',[PhotoslidesController::class, 'deleteSlide'], function () {
+    return view('/dashboard/pages/photoSlider');
+})->middleware(['auth','verified'])->name('photoSlider');
+
+
+Route::post('/photoSlider/editSlide/{id}',[PhotoslidesController::class, 'editSlide'], function () {
+    return view('/dashboard/pages/photoSlider');
+})->middleware(['auth','verified'])->name('photoSlider');
+
+
+Route::post('/photoSlider/deleteSelectedSlides/{typeSlide}',[PhotoslidesController::class, 'deleteSelectedSlides'], function () {
+    return view('/dashboard/pages/photoSlider');
+})->middleware(['auth','verified'])->name('photoSlider');
 
 // -------- PhotoSlider Routes End -------------------------------- ///
 
