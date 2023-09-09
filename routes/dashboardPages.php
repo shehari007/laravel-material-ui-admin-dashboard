@@ -6,10 +6,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralSettingsController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\NewsAndUpdateController;
+use App\Http\Controllers\PhotogalleryController;
 use App\Http\Controllers\PhotoslidesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\WebpagesController;
+use App\Models\photogallery;
 
 /*
 |--------------------------------------------------------------------------
@@ -236,7 +238,19 @@ Route::post('/photoSlider/deleteSelectedSlides/{typeSlide}',[PhotoslidesControll
 // -------- PhotoSlider Routes End -------------------------------- ///
 
 
-Route::get('/photoGallery', function () {
+Route::get('/photoGallery', [PhotogalleryController::class, 'getGallery'], function () {
+    return view('/dashboard/pages/photoGallery');
+})->middleware(['auth','verified'])->name('photoGalleryhome');
+
+Route::post('/photoGallery/fileUpload' ,[PhotogalleryController::class, 'fileUpload'], function () {
+    return view('/dashboard/pages/photoGallery');
+})->middleware(['auth','verified'])->name('photoGallery');
+
+Route::post('/photoGallery/deletePhoto/{id}' ,[PhotogalleryController::class, 'deletePhoto'], function () {
+    return view('/dashboard/pages/photoGallery');
+})->middleware(['auth','verified'])->name('photoGallery');
+
+Route::post('/photoGallery/deleteGallery/' ,[PhotogalleryController::class, 'deleteGallery'], function () {
     return view('/dashboard/pages/photoGallery');
 })->middleware(['auth','verified'])->name('photoGallery');
 

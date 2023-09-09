@@ -100,7 +100,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'photoGallery' ? 'active bg-gradient-primary' : '' }} "
-                    href="{{ route('photoGallery') }}">
+                    href="{{ route('photoGalleryhome') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1.2rem;" class="fa fa-camera ps-2 pe-2 text-center"></i>
                     </div>
