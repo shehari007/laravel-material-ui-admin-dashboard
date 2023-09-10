@@ -109,7 +109,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'videoGallery' ? 'active bg-gradient-primary' : '' }} "
-                    href="{{ route('videoGallery') }}">
+                    href="{{ route('videoGalleryhome') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1.2rem;" class="fa fa-video-camera ps-2 pe-2 text-center"></i>
                     </div>
@@ -118,7 +118,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'references' ? 'active bg-gradient-primary' : '' }} "
-                    href="{{ route('references') }}">
+                    href="{{ route('referenceshome') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1.2rem;" class="fa fa-rebel ps-2 pe-2 text-center"></i>
                     </div>

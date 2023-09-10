@@ -33,7 +33,7 @@ class PhotogalleryController extends Controller
 
         if ($request->hasFile('file')) {
             $image = $request->file('file');
-            $imageName = time() . '.' . $image->extension();
+            $imageName = time() . Str::random(5) . '.' . $image->extension();
             $image->storeAs('public/PhotoGallery/Gallery', $imageName);
             $newRecord = new photogallery([
                 'src' => $imageName,
