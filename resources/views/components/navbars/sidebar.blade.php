@@ -145,7 +145,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'documents' ? 'active bg-gradient-primary' : '' }} "
-                    href="{{ route('documents') }}">
+                    href="{{ route('documentshome') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1.2rem;" class="fa fa-book ps-2 pe-2 text-center"></i>
                     </div>

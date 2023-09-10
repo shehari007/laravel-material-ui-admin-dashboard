@@ -2,7 +2,7 @@
         <x-navbars.sidebar activePage="locations"></x-navbars.sidebar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
             <!-- Navbar -->
-            <x-navbars.navs.auth titlePage="locations"></x-navbars.navs.auth>
+            <x-navbars.navs.auth titlePage="Locations"></x-navbars.navs.auth>
             <!-- End Navbar -->
             <div class="container-fluid py-4">
             @if (\Session::has('success'))

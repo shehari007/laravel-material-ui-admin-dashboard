@@ -22,7 +22,7 @@
                 <p style="color: white;font-weight:bold">{!! \Session::get('back_img') !!}</p>
             </div>
             @endif
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewPagesModal"><i class="material-icons">add</i>Add New</button>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addNewPagesModal"><i class="material-icons">add</i>Add New WebPage</button>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmCheckBoxModalPages" id="delete-selected-modal-pages" style="display: none;">
                 <i class="material-icons">delete</i> Delete Selected
             </button>

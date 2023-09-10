@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\DocumentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralSettingsController;
 use App\Http\Controllers\InboxController;
@@ -370,6 +371,23 @@ Route::post('/locations/deleteSelected/{typeLocation}',[LocationController::clas
 // --------- Location Routes End --------------------------------///
 
 
-Route::get('/documents', function () {
+Route::get('/documents',[DocumentController::class, 'getDocuments'], function () {
+    return view('/dashboard/pages/documents');
+})->middleware(['auth', 'verified'])->name('documentshome');
+
+
+Route::post('/documents/insertNewDocument',[DocumentController::class, 'insertNewDocument'], function () {
+    return view('/dashboard/pages/documents');
+})->middleware(['auth', 'verified'])->name('documents');
+
+Route::post('/documents/editDocument/{id}',[DocumentController::class, 'editDocument'], function () {
+    return view('/dashboard/pages/documents');
+})->middleware(['auth', 'verified'])->name('documents');
+
+Route::post('/documents/deleteDocument/{id}',[DocumentController::class, 'deleteDocument'], function () {
+    return view('/dashboard/pages/documents');
+})->middleware(['auth', 'verified'])->name('documents');
+
+Route::post('/documents/deleteSelectedDocuments/{typeDocument}',[DocumentController::class, 'deleteSelectedDocuments'], function () {
     return view('/dashboard/pages/documents');
 })->middleware(['auth', 'verified'])->name('documents');
