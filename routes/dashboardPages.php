@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralSettingsController;
@@ -293,6 +294,7 @@ Route::post('/videoGallery/deleteSelectedVideos/{typeVideo}', [VideogalleryContr
 
 
 
+// --------- References Routes Start --------------------------------///
 
 Route::get('/references',[ReferenceController::class,'getReferences'], function () {
     return view('/dashboard/pages/references');
@@ -311,15 +313,36 @@ Route::post('/references/deleteGalleryRef',[ReferenceController::class,'deleteGa
     return view('/dashboard/pages/references');
 })->middleware(['auth', 'verified'])->name('references');
 
+// --------- References Routes End --------------------------------///
 
 
 
 
+// --------- Branches Routes Start --------------------------------///
 
+Route::get('/branches', [BranchController::class, 'getBranches'], function () {
+    return view('/dashboard/pages/branches');
+})->middleware(['auth', 'verified'])->name('brancheshome');
 
-Route::get('/branches', function () {
+Route::post('/branches/insertNewBranch', [BranchController::class, 'insertNewBranch'], function () {
     return view('/dashboard/pages/branches');
 })->middleware(['auth', 'verified'])->name('branches');
+
+Route::post('/branches/editBranch/{id}', [BranchController::class, 'editBranch'], function () {
+    return view('/dashboard/pages/branches');
+})->middleware(['auth', 'verified'])->name('branches');
+
+Route::post('/branches/deleteBranch/{id}', [BranchController::class, 'deleteBranch'], function () {
+    return view('/dashboard/pages/branches');
+})->middleware(['auth', 'verified'])->name('branches');
+
+Route::post('/branches/deletedSelected/{typeBranch}', [BranchController::class, 'deleteSelectedBranches'], function () {
+    return view('/dashboard/pages/branches');
+})->middleware(['auth', 'verified'])->name('branches');
+
+// --------- Branches Routes End --------------------------------///
+
+
 
 Route::get('/locations', function () {
     return view('/dashboard/pages/locations');
