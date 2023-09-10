@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralSettingsController;
 use App\Http\Controllers\InboxController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\NewsAndUpdateController;
 use App\Http\Controllers\PhotogalleryController;
 use App\Http\Controllers\PhotoslidesController;
@@ -344,9 +345,30 @@ Route::post('/branches/deletedSelected/{typeBranch}', [BranchController::class, 
 
 
 
-Route::get('/locations', function () {
+// --------- Location Routes Start --------------------------------///
+
+Route::get('/locations',[LocationController::class, 'getLocations'], function () {
+    return view('/dashboard/pages/locations');
+})->middleware(['auth', 'verified'])->name('locationshome');
+
+Route::post('/locations/insertNewLocation',[LocationController::class, 'insertNewLocation'], function () {
     return view('/dashboard/pages/locations');
 })->middleware(['auth', 'verified'])->name('locations');
+
+Route::post('/locations/deleteLocation/{id}',[LocationController::class, 'deleteLocation'], function () {
+    return view('/dashboard/pages/locations');
+})->middleware(['auth', 'verified'])->name('locations');
+
+Route::post('/locations/editLocation/{id}',[LocationController::class, 'editLocation'], function () {
+    return view('/dashboard/pages/locations');
+})->middleware(['auth', 'verified'])->name('locations');
+
+Route::post('/locations/deleteSelected/{typeLocation}',[LocationController::class, 'deleteSelectedLocations'], function () {
+    return view('/dashboard/pages/locations');
+})->middleware(['auth', 'verified'])->name('locations');
+
+// --------- Location Routes End --------------------------------///
+
 
 Route::get('/documents', function () {
     return view('/dashboard/pages/documents');
