@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DocumentController;
 use Illuminate\Support\Facades\Route;
@@ -371,6 +372,10 @@ Route::post('/locations/deleteSelected/{typeLocation}',[LocationController::clas
 // --------- Location Routes End --------------------------------///
 
 
+
+// --------- Documents Routes Start --------------------------------///
+
+
 Route::get('/documents',[DocumentController::class, 'getDocuments'], function () {
     return view('/dashboard/pages/documents');
 })->middleware(['auth', 'verified'])->name('documentshome');
@@ -391,3 +396,43 @@ Route::post('/documents/deleteDocument/{id}',[DocumentController::class, 'delete
 Route::post('/documents/deleteSelectedDocuments/{typeDocument}',[DocumentController::class, 'deleteSelectedDocuments'], function () {
     return view('/dashboard/pages/documents');
 })->middleware(['auth', 'verified'])->name('documents');
+
+// --------- Documents Routes End --------------------------------///
+
+
+
+// --------- Catalogu Routes Start --------------------------------///
+
+Route::get('/catalogues',[CatalogueController::class, 'getCatalogues'], function () {
+    return view('/dashboard/pages/catalogue');
+})->middleware(['auth', 'verified'])->name('catalogueshome');
+
+
+Route::post('/catalogues/insertNewCatalogue', [CatalogueController::class, 'insertNewCatalogue' ],function () {
+    return view('/dashboard/pages/catalogue');
+})->middleware(['auth', 'verified'])->name('catalogues');
+
+
+Route::post('/catalogues/deleteCatalogue/{id}', [CatalogueController::class, 'deleteCatalogue' ],function () {
+    return view('/dashboard/pages/catalogue');
+})->middleware(['auth', 'verified'])->name('catalogues');
+
+
+Route::post('/catalogues/editCatalogue/{id}', [CatalogueController::class, 'editCatalogue' ],function () {
+    return view('/dashboard/pages/catalogue');
+})->middleware(['auth', 'verified'])->name('catalogues');
+
+
+Route::post('/catalogues/deleteSelectedCatalogues/{typeCatalogue}', [CatalogueController::class, 'deleteSelectedCatalogues' ],function () {
+    return view('/dashboard/pages/catalogue');
+})->middleware(['auth', 'verified'])->name('catalogues');
+
+// --------- Catalogu Routes End --------------------------------///
+
+
+// --------- Menu Routes Start --------------------------------///
+
+
+Route::get('/menuSettings', function () {
+    return view('/dashboard/pages/menuSettings');
+})->middleware(['auth', 'verified'])->name('menuSettingshome');
