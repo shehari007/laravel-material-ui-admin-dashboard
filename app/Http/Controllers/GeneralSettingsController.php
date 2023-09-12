@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\generalSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Storage;
 class GeneralSettingsController extends Controller
 {
     /**
@@ -106,6 +106,9 @@ class GeneralSettingsController extends Controller
             ]);
 
             if ($request->hasFile('logo')) {
+                if ($table->siteset_picsrc!==''){
+                    Storage::delete('public/logo/' . $table->list_img);
+                }
                 $uploadedFile = $request->file('logo');
                 $originalFilename = $uploadedFile->getClientOriginalName();
                 $filename = Str::random(20) . '_' . $originalFilename;
