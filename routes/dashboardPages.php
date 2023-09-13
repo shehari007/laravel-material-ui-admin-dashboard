@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralSettingsController;
 use App\Http\Controllers\InboxController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\MenuSettingsController;
 use App\Http\Controllers\NewsAndUpdateController;
 use App\Http\Controllers\PhotogalleryController;
 use App\Http\Controllers\PhotoslidesController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\ReferenceController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\VideogalleryController;
 use App\Http\Controllers\WebpagesController;
+use App\Models\menuSettings;
 use App\Models\photogallery;
 
 /*
@@ -433,6 +435,6 @@ Route::post('/catalogues/deleteSelectedCatalogues/{typeCatalogue}', [CatalogueCo
 // --------- Menu Routes Start --------------------------------///
 
 
-Route::get('/menuSettings', function () {
+Route::get('/menuSettings',[MenuSettingsController::class,'getMenus'], function () {
     return view('/dashboard/pages/menuSettings');
 })->middleware(['auth', 'verified'])->name('menuSettingshome');

@@ -153,7 +153,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ $activePage == 'documents' ? 'active bg-gradient-primary' : '' }} "
+                <a class="nav-link text-white {{ $activePage == 'catalogues' ? 'active bg-gradient-primary' : '' }} "
                     href="{{ route('catalogueshome') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1.2rem;" class="fa fa-book ps-2 pe-2 text-center"></i>
@@ -162,7 +162,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ $activePage == 'documents' ? 'active bg-gradient-primary' : '' }} "
+                <a class="nav-link text-white {{ $activePage == 'menuSettings' ? 'active bg-gradient-primary' : '' }} "
                     href="{{ route('menuSettingshome') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1.2rem;" class="fa fa-book ps-2 pe-2 text-center"></i>
