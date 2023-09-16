@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\menuSettings;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class MenuSettingsController extends Controller
 {
     /**
@@ -12,8 +12,17 @@ class MenuSettingsController extends Controller
      */
     public function getMenus()
     {
-        $menus = menuSettings::all();
-        return view("/dashboard/pages/menuSettings", compact('menus'));
+        $topMenus = menuSettings::select('menu_heading', 'id', 'order', 'page_url', 'out_page_url')
+            ->where('menu_type', 'top')
+            ->orderBy('order', 'asc') // Sort by 'order' column in ascending order
+            ->get();
+
+        $menus = menuSettings::select('menu_heading', 'top_id', 'order', 'page_url', 'out_page_url')
+            ->where('menu_type', 'sub')
+            ->orderBy('order', 'asc') // Sort by 'order' column in ascending order
+            ->get();
+            $webPages = DB::table('webpages')->get();
+        return view("/dashboard/pages/menuSettings", compact('topMenus', 'menus', 'webPages'));
     }
 
     /**
