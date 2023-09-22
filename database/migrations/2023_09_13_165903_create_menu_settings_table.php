@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('menu_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('top_menu_heading')->default('');
+            $table->string('menu_title')->default('');
             $table->integer('order');
             $table->string('page_url')->default('');
-            $table->string('out_page_url')->default('');
-            $table->string('sub_menu')->default('');
-            $table->string('top_id')->nullable();
+            $table->string('outer_page_url')->default('');
+            $table->string('parent_id')->nullable();
             $table->timestamps();
         });
     }

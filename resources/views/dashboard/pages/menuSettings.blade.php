@@ -14,52 +14,23 @@ $activeTab = request()->query();
                 <button type="button" class="btn btn-success" style="max-width: 100px;margin-top: 25px;margin-left:25px">Add</button>
                 <div style="display: flex; flex-direction: row; justify-content: center;">
                     <div class="card">
-                       
-                            <div class="table-responsive">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            @foreach ($topMenus as $topMenu)
-                                            <th style="text-align: center;" class="text-dark text-sm font-weight-bolder opacity-7">({{$topMenu->order}}) {{ $topMenu->menu_heading }}
-                                                <a href="#"><i class="material-icons">edit</i></a>
-                                                <a href="#"><i class="material-icons">delete</i></a>
-                                            </th>
-                                            @endforeach
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $subMenuMap = [];
 
-                                        // Initialize subMenuMap with empty arrays for each top menu
-                                        foreach ($topMenus as $topMenu) {
-                                            $subMenuMap[$topMenu->id] = [];
-                                        }
+                        <ul>
+                            @foreach ($menuItems as $m)
+                            @if($m->parent_id===null)
+                            <li>{{$m->menu_title}}</li>
+                            @endif
+                            <ul>
+                                @foreach($menuItems as $m2)
+                                @if($m->parent_id===$m2->id)
+                                <li>{{$m->menu_title}}</li>
+                                @endif
+                                @endforeach
+                            </ul>
+                            @endforeach
+                        </ul>
 
-                                        // Organize sub-menus into subMenuMap
-                                        foreach ($menus as $subMenu) {
-                                            $subMenuMap[$subMenu->top_id][] = $subMenu;
-                                        }
-                                        ?>
 
-                                        @php $maxRowCount = max(array_map('count', $subMenuMap)); @endphp
-
-                                        @for ($i = 0; $i < $maxRowCount; $i++) <tr style="text-align: center;">
-                                            @foreach ($topMenus as $topMenu)
-                                            <td>
-                                                @if (isset($subMenuMap[$topMenu->id][$i]))
-                                                ({{$i+1}}) {{ $subMenuMap[$topMenu->id][$i]->menu_heading }}
-                                                <a href="#"><i class="material-icons">edit</i></a>
-                                                <a href="#"><i class="material-icons">delete</i></a>
-                                                @endif
-                                            </td>
-                                            @endforeach
-                                            </tr>
-                                            @endfor
-                                    </tbody>
-                                </table>
-                            </div>
-                        
                     </div>
                 </div>
                 <br />
@@ -76,10 +47,12 @@ $activeTab = request()->query();
                             <div class="col-sm-9">
 
                                 <select class="form-control" name="top_menu" id="top_menu">
-                                <option value="null">None</option>
-                                    @foreach ($topMenus as $top)
-                                    <option value="{{ $top->id }}">{{ $top->menu_heading }}</option>
-                                   @endforeach
+                                    <option value="null">None</option>
+                                    @foreach ($menuItems as $top)
+                                    @if($top->parent_id === null)
+                                    <option value="{{ $top->id }}">{{ $top->menu_title }}</option>
+                                    @endif
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -104,10 +77,10 @@ $activeTab = request()->query();
                             <div class="col-sm-9">
 
                                 <select class="form-control" name="web_pages" id="web_pages">
-                                <option value="">None</option>
+                                    <option value="">None</option>
                                     @foreach($webPages as $page)
                                     <option value="{{ $page->url }}">{{$page->heading}}</option>
-                                   @endforeach
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -133,3 +106,8 @@ $activeTab = request()->query();
     <x-plugins></x-plugins>
 
 </x-layout>
+<style>
+    .menu_heading {
+        margin-right: 15px;
+    }
+</style>

@@ -12,17 +12,18 @@ class MenuSettingsController extends Controller
      */
     public function getMenus()
     {
-        $topMenus = menuSettings::select('menu_heading', 'id', 'order', 'page_url', 'out_page_url')
-            ->where('menu_type', 'top')
-            ->orderBy('order', 'asc') // Sort by 'order' column in ascending order
-            ->get();
+        // $topMenus = menuSettings::select('menu_heading', 'id', 'order', 'page_url', 'out_page_url')
+        //     ->where('menu_type', 'top')
+        //     ->orderBy('order', 'asc') // Sort by 'order' column in ascending order
+        //     ->get();
 
-        $menus = menuSettings::select('menu_heading', 'top_id', 'order', 'page_url', 'out_page_url')
-            ->where('menu_type', 'sub')
-            ->orderBy('order', 'asc') // Sort by 'order' column in ascending order
-            ->get();
+        // $menus = menuSettings::select('menu_heading', 'top_id', 'order', 'page_url', 'out_page_url')
+        //     ->where('menu_type', 'sub')
+        //     ->orderBy('order', 'asc') // Sort by 'order' column in ascending order
+        //     ->get();
+        $menuItems = menuSettings::all();
             $webPages = DB::table('webpages')->get();
-        return view("/dashboard/pages/menuSettings", compact('topMenus', 'menus', 'webPages'));
+        return view("/dashboard/pages/menuSettings", compact('menuItems','webPages'));
     }
 
     /**
