@@ -13,20 +13,14 @@ $activeTab = request()->query();
             <div class="card">
                 <button type="button" class="btn btn-success" style="max-width: 100px;margin-top: 25px;margin-left:25px">Add</button>
                 <div style="display: flex; flex-direction: row; justify-content: center;">
-                    <div class="card">
+                    <div class="card" style="display: inline; width: 90%; justify-content:center;">
 
-                        <ul>
+                        <ul style="display: inline;  list-style-type: none;">
                             @foreach ($menuItems as $m)
                             @if($m->parent_id===null)
-                            <li>{{$m->menu_title}}</li>
+                            <li style="float: left; margin-right:5%">{{$m->menu_title}}</li>
                             @endif
-                            <ul>
-                                @foreach($menuItems as $m2)
-                                @if($m->parent_id===$m2->id)
-                                <li>{{$m->menu_title}}</li>
-                                @endif
-                                @endforeach
-                            </ul>
+                          
                             @endforeach
                         </ul>
 
